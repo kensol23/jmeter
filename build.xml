@@ -417,6 +417,7 @@
     <include name="${lib.dir}/${jodd-props.jar}"/>
     <include name="${lib.dir}/${json-path.jar}"/>
     <include name="${lib.dir}/${json-smart.jar}"/>
+  	<include name="${lib.dir}/${json-schema-validator.jar}"/>
     <include name="${lib.dir}/${jsoup.jar}"/>
     <include name="${lib.dir}/${junit.jar}"/>
     <include name="${lib.dir}/${log4j-1.2-api.jar}"/>
@@ -496,6 +497,7 @@
     <pathelement location="${lib.dir}/${jodd-props.jar}"/>
     <pathelement location="${lib.dir}/${json-path.jar}"/>
     <pathelement location="${lib.dir}/${json-smart.jar}"/>
+  	<pathelement location="${lib.dir}/${json-schema-validator.jar}"/>
     <pathelement location="${lib.dir}/${jsoup.jar}"/>
     <pathelement location="${lib.dir}/${junit.jar}"/>
     <pathelement location="${lib.dir}/${log4j-1.2-api.jar}"/>

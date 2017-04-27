@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<project name="LLBQA JSON Schema assertion" default="build-jar" basedir="C:\apache\apache-jmeter-3.2\">
+   <!-- JMeter Home (Change the value as per your installation directory) -->
+    <property name="jmeter.home" value="C:\apache\apache-jmeter-3.2"/>
+    <property name="jmeter.plugin-lib" value="${jmeter.home}/lib/ext"/>
+    <property name="ref.lib" value="${jmeter.home}/lib"/>
+    <property name="jar.file" value="${basedir}/lib/ext/LLBQA_JSONSchemaAssertion.jar"/>
+    <property name="build.dir" value="${basedir}/build"/>
+    <property name="user.name" value="crksf"/>
+    <property name="version" value="1.0"/>
+    <property name="dev.dir" value="C:\Users\crksf\workspace\jmeter\"/>
+
+    <path id="class.path">
+      <fileset dir="${ref.lib}" includes="**/*.jar"/>
+    </path>
+
+    <taskdef
+      name="jmeter"
+      classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask"/>
+
+    <target name="echo-properties">
+      <echo>JMETER_HOME: ${jmeter.home}</echo>
+      <echo>JMETER_PLUGIN_INSTALLATION_DIR: ${jmeter.plugin-lib}</echo>
+    </target>
+
+    <target name="init">
+      <delete file="${jar.file}"/>
+      <delete dir="${build.dir}"/>
+      <mkdir dir="${build.dir}"/>
+      <mkdir dir="${build.dir}/classes"/>
+    </target>
+
+    <target name="compile" depends="init">
+      <copy todir="${build.dir}/classes/com/llbean/jmeter/assertions/" overwrite="true">
+        <fileset file="${dev.dir}/src/components/com/llbean/jmeter/assertions/*.properties"/>
+      </copy>
+      <copy todir="${basedir}/src/components/com/llbean/jmeter/assertions/" overwrite="true">
+        <fileset file="${dev.dir}/src/components/com/llbean/jmeter/assertions/*.java"/>
+      </copy>
+      <javac source="1.8" target="1.8" 
+        debug="true" 
+        classpathref="class.path" 
+        srcdir="${basedir}/src" 
+        destdir="${build.dir}/classes" 
+        includeantruntime="true">
+     </javac>
+    </target>
+
+    <target name="build-jar" depends="compile" description="Package the jar file." >
+      <jar destfile="${jar.file}">
+        <manifest>
+          <attribute name="Built-By" value="${user.name}"/>
+          <attribute name="Title" value="LLBQA_JSONSchemaAssertion"/>
+          <attribute name="Version" value="${version}"/>
+        </manifest>
+        <fileset dir="${build.dir}/classes" includes="**/*.class, **/*.properties" />
+      </jar>
+    </target>
+
+    <target name="run" depends="build-jar" description="Compile, build jar and run JMeter">
+      <jmeter jmeterhome="${jmeter.home}"/>
+    </target>
+
+</project>

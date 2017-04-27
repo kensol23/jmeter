@@ -7,7 +7,7 @@
     <property name="jar.file" value="${basedir}/lib/ext/LLBQA_JSONSchemaAssertion.jar"/>
     <property name="build.dir" value="${basedir}/build"/>
     <property name="user.name" value="crksf"/>
-    <property name="version" value="1.0"/>
+    <property name="version" value="0.1"/>
     <property name="dev.dir" value="C:\Users\crksf\workspace\jmeter\"/>
 
     <path id="class.path">
